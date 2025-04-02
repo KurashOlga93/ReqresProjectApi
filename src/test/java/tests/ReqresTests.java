@@ -14,7 +14,7 @@ public class ReqresTests {
     SoftAssert softAssert = new SoftAssert();
     public static final String BASE_URL = "https://reqres.in/api/";
 
-    @Test()
+    @Test(description = "Create new user with name and job fields")
     public void postCreateUserTest() {
         User user = User.builder()
                 .name("morpheus")
@@ -35,7 +35,7 @@ public class ReqresTests {
                 .statusCode(201);
     }
 
-    @Test()
+    @Test(description = "Get users list and check fields for first user")
     public void getUsersListTest() {
 
         String body =
@@ -57,7 +57,7 @@ public class ReqresTests {
         softAssert.assertAll();
     }
 
-    @Test()
+    @Test(description = "Get user and check fields")
     public void getSingleUserTest() {
         given()
                 .log().all()
@@ -73,7 +73,7 @@ public class ReqresTests {
                         "data.avatar", equalTo("https://reqres.in/img/faces/2-image.jpg"));
     }
 
-    @Test()
+    @Test(description = "Get user and check that user not founds")
     public void getSingleUserNotFoundTest() {
         given()
                 .log().all()
@@ -85,7 +85,7 @@ public class ReqresTests {
                 .body(equalTo("{}"));
     }
 
-    @Test()
+    @Test(description = "Get resource list and check fields of first resource")
     public void getListResourceTest() {
         String body =
                 given()
@@ -106,7 +106,7 @@ public class ReqresTests {
         softAssert.assertAll();
     }
 
-    @Test()
+    @Test(description = "Get one resource and check fields")
     public void getSingleResourceTest() {
         given()
                 .log().all()
@@ -122,7 +122,7 @@ public class ReqresTests {
                         "data.pantone_value", equalTo("17-2031"));
     }
 
-    @Test()
+    @Test(description = "Get resource and check that resource is not found")
     public void getSingleResourceNotFoundTest() {
         given()
                 .log().all()
@@ -134,7 +134,7 @@ public class ReqresTests {
                 .body(equalTo("{}"));
     }
 
-    @Test()
+    @Test(description = "Update user fields name and job and check")
     public void putUpdateUserTest() {
         User user = User.builder()
                 .name("morpheus")
@@ -155,7 +155,7 @@ public class ReqresTests {
                 .statusCode(200);
     }
 
-    @Test()
+    @Test(description = "Patch update name and job fields and check that fields updated")
     public void patchUpdateUserTest() {
         User user = User.builder()
                 .name("morpheus")
@@ -176,7 +176,7 @@ public class ReqresTests {
                 .statusCode(200);
     }
 
-    @Test()
+    @Test(description = "Delete user and check body is empty and status code is 204")
     public void deleteTest() {
 
         given()
@@ -191,8 +191,8 @@ public class ReqresTests {
                 .statusCode(204);
     }
 
-    @Test()
-    public void registerSuccessfulTest() {
+    @Test(description = "Register new user and check id and token is created")
+    public void postRegisterSuccessfulTest() {
         User user = User.builder()
                 .email("eve.holt@reqres.in")
                 .password("pistol")
@@ -212,8 +212,8 @@ public class ReqresTests {
                 .statusCode(200);
     }
 
-    @Test()
-    public void registerUnsuccessfulTest() {
+    @Test(description = "Register new user without required password field and check error and status code")
+    public void postRegisterUnsuccessfulTest() {
         User user = User.builder()
                 .email("sydney@fife")
                 .build();
@@ -231,8 +231,8 @@ public class ReqresTests {
                 .statusCode(400);
     }
 
-    @Test()
-    public void loginSuccessfulTest() {
+    @Test(description = "Login user and check token is created and status code 200")
+    public void postLoginSuccessfulTest() {
         User user = User.builder()
                 .email("eve.holt@reqres.in")
                 .password("cityslicka")
@@ -251,8 +251,8 @@ public class ReqresTests {
                 .statusCode(200);
     }
 
-    @Test()
-    public void loginUnsuccessfulTest() {
+    @Test(description = "Login new user without required password field and check error and status code")
+    public void postLoginUnsuccessfulTest() {
         User user = User.builder()
                 .email("peter@klaven")
                 .build();
@@ -270,7 +270,7 @@ public class ReqresTests {
                 .statusCode(400);
     }
 
-    @Test()
+    @Test(description = "Get users list with delay and check first user fields")
     public void getDelayedResponceTest() {
         String body =
                 given()
