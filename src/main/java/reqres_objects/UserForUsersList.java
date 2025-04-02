@@ -1,4 +1,4 @@
-package requres_objects;
+package reqres_objects;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

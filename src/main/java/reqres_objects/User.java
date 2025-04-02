@@ -1,4 +1,4 @@
-package requres_objects;
+package reqres_objects;
 
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +9,9 @@ import lombok.Data;
         String name;
         String job;
         String id;
+        String updatedAt;
         String createdAt;
+        String email;
+        String password;
     }
 
